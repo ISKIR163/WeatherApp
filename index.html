@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+
+
+<body>
+
+  <header>
+
+    <!-- Лого -->
+
+    <div class="header">
+      <a href="index.html">
+        <svg class="logo" width="192" height="48" viewBox="0 0 192 48">
+          <use href="./sprites.svg#logo"></use>
+        </svg>
+      </a>
+
+      <!-- Поиск -->
+
+      <form class="search" action="#">
+        <input class="search-input" type="text" name="text" placeholder="Поиск по городу">
+        <button class="search-btn" type="submit">
+          <svg class="loupe" width="20" height="20" viewBox="0 0 20 20">
+            <use href="./sprites.svg#search-btn"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <main class="weather">
+
+    <!-- Погода текущего дня -->
+
+    <section class="weather__day">
+      <div class="weather__card">
+        <span class="weather__card-city">Москва</span>
+        <time class="weather__card-day">Суббота, 06 января</time>
+        <time class="weather__card-time" datetime="11:29">11:29</time>
+      </div>
+      <div class="temp">
+        <span class="temp-value">-7°</span>
+      </div>
+      <div class="weather__details">
+        <div class="weather__details-state">
+          <div class="weather__details-cloudyimg"></div>
+          <span class="weather__details-description">Облачно</span>
+        </div>
+        <span class="weather__details-feeling">Ощущается как -11°</span>
+      </div>
+    </section>
+
+    <!-- Карточки -->
+
+    <section class="grid">
+      <ul class="grid__cards">
+        <li class="cards">
+        </li>
+        <li class="cards">
+        </li>
+        <li class="cards">
+        </li>
+        <li class="cards">
+        </li>
+        <li class="cards">
+        </li>
+        <li class="cards">
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Карусель -->
+
+  <section class="carousel">
+  </section>
+
+  <!-- Футер   -->
+
+  <footer class="footer">
+  </footer>
+
+
+
+</body>
+
+</html>

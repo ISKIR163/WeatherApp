@@ -1,0 +1,8 @@
+:root {
+  --main-font: Raleway, Arial, sans-serif;
+
+  /* BLUR */
+
+  --color-blur10: #7070701a;
+  --blur50: blur(50px);
+}

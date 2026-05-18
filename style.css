@@ -1,0 +1,183 @@
+@import url(./styles/variables.css);
+@import url(./styles/fonts.css);
+@import url(./styles/search-panel.css);
+
+html {
+  min-width: 1280px;
+  min-height: 924px;
+  background-image: url(./public/background-cloudy.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+* {
+  font-family: var(--main-font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  width: 1120px;
+  margin: 32px auto;
+  background: #7070701a;
+  backdrop-filter: blur(10px);
+}
+
+header {
+  width: 1120px;
+  height: 112px;
+  padding: 32px;
+}
+
+main {
+  display: flex;
+  width: 1120px;
+  height: 472px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather {
+  padding: 32px;
+  gap: 16px;
+}
+
+.weather__day {
+  display: flex;
+  flex-direction: column;
+  width: 534px;
+  height: 408px;
+  gap: 64px;
+  padding: 8px;
+}
+
+.weather__card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weather__card-city {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #f5f4f4;
+}
+
+.weather__card-day {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
+  color: #f5f4f4;
+}
+
+.weather__card-time {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
+  color: #f5f4f4;
+}
+
+.temp {
+  display: flex;
+  flex-direction: column;
+}
+
+.temp-value {
+  font-weight: 700;
+  font-size: 112px;
+  line-height: 112px;
+  letter-spacing: 0px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
+  color: #f5f4f4;
+}
+
+.weather__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weather__details-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.weather__details-cloudyimg {
+  width: 24px;
+  height: 24px;
+  background-image: url(./images/cloudy.svg);
+}
+
+.weather__details-description {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #f5f4f4;
+}
+
+.weather__details-feeling {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
+  color: #f5f4f4;
+}
+
+.grid {
+  width: 506px;
+  height: 408px;
+}
+
+.grid__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cards {
+  width: 158px;
+  height: 196px;
+  border-radius: 8px;
+  background: #f5f4f466;
+}
+
+.carousel {
+  width: 1120px;
+  height: 192px;
+}
+
+.footer {
+  width: 1120px;
+  height: 84px;
+}
