@@ -1,0 +1,92 @@
+.weather {
+  display: flex;
+  flex-direction: column;
+  width: 534px;
+  height: 408px;
+  gap: 64px;
+  padding: 8px;
+}
+
+.weather__card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weather__city {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: var(--basic);
+}
+
+.weather__day {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
+  color: var(--basic);
+}
+
+.weather__time {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
+  color: var(--basic);
+}
+
+.weather__temp {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather__temp-value {
+  font-weight: 700;
+  font-size: 112px;
+  line-height: 112px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
+  color: var(--basic);
+}
+
+.weather__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weather__state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.weather__state-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url(../images/cloudy.svg);
+}
+
+.weather__state-description {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--basic);
+}
+
+.weather__details-feeling {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+  color: var(--basic);
+}

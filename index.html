@@ -8,88 +8,74 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 
-
-
 <body>
-
   <header>
+    <a class="logo" href="index.html" aria-label="переход на главную страницу">
 
-    <!-- Лого -->
-
-    <div class="header">
-      <a href="index.html">
-        <svg class="logo" width="192" height="48" viewBox="0 0 192 48">
-          <use href="./sprites.svg#logo"></use>
+      <svg class="logo__img" width="192" height="48" viewBox="0 0 192 48" aria-hidden="true">
+        <use href="./sprites.svg#logo"></use>
+      </svg>
+    </a>
+    <form class="search" action="#">
+      <input class="search__input" id="input" type="text" name="text" placeholder="Поиск по городу" autocomplete="off">
+      <button class="search__submit search__submit--hidden" type="submit" aria-label="отправка формы"></button>
+      <svg class="search__icon search__icon--loupe" width="24" height="24" viewBox="0 0 24 24">
+        <use href="./sprites.svg#loupe"></use>
+      </svg>
+      <button class="search__reset" type="reset" aria-label="очистить">
+        <svg class="search__icon search__icon--cross" width="24" height="24" viewBox="0 0 24 24">
+          <use href="./sprites.svg#cross"></use>
         </svg>
-      </a>
-
-      <!-- Поиск -->
-
-      <form class="search" action="#">
-        <input class="search-input" type="text" name="text" placeholder="Поиск по городу">
-        <button class="search-btn" type="submit">
-          <svg class="loupe" width="20" height="20" viewBox="0 0 20 20">
-            <use href="./sprites.svg#search-btn"></use>
-          </svg>
-        </button>
-      </form>
-    </div>
+      </button>
+    </form>
   </header>
-
-  <main class="weather">
-
-    <!-- Погода текущего дня -->
-
-    <section class="weather__day">
-      <div class="weather__card">
-        <span class="weather__card-city">Москва</span>
-        <time class="weather__card-day">Суббота, 06 января</time>
-        <time class="weather__card-time" datetime="11:29">11:29</time>
-      </div>
-      <div class="temp">
-        <span class="temp-value">-7°</span>
-      </div>
-      <div class="weather__details">
-        <div class="weather__details-state">
-          <div class="weather__details-cloudyimg"></div>
-          <span class="weather__details-description">Облачно</span>
+  <main>
+    <div class="container">
+      <h1 class="visually-hidden">Прогноз погоды на неделю</h1>
+      <section class="weather">
+        <h6 class="weather__title weather__title--hidden">Прогноз погоды на сегодня</h6>
+        <div class="weather__card">
+          <h2 class="weather__city">Москва</h2>
+          <time class="weather__day" datetime="2026-01-06">Суббота, 06 января</time>
+          <time class="weather__time" datetime="11:29">11:29</time>
         </div>
-        <span class="weather__details-feeling">Ощущается как -11°</span>
-      </div>
-    </section>
-
-    <!-- Карточки -->
-
-    <section class="grid">
-      <ul class="grid__cards">
-        <li class="cards">
-        </li>
-        <li class="cards">
-        </li>
-        <li class="cards">
-        </li>
-        <li class="cards">
-        </li>
-        <li class="cards">
-        </li>
-        <li class="cards">
-        </li>
-      </ul>
+        <div class="weather__temp">
+          <span class="weather__temp-value">-7°</span>
+        </div>
+        <div class="weather__details">
+          <div class="weather__state">
+            <div class="weather__state-icon"></div>
+            <span class="weather__state-description">Облачно</span>
+          </div>
+          <span class="weather__details-feeling">Ощущается как -11°</span>
+        </div>
+      </section>
+      <section class="cards">
+        <h6 class="cards__title cards__title--hidden">Прогноз погоды подробный на неделю</h6>
+        <ul class="cards__list">
+          <li class="cards__item">
+          </li>
+          <li class="cards__item">
+          </li>
+          <li class="cards__item">
+          </li>
+          <li class="cards__item">
+          </li>
+          <li class="cards__item">
+          </li>
+          <li class="cards__item">
+          </li>
+        </ul>
+      </section>
+    </div>
+    <section class="carousel">
+      <h6 class="carousel__title carousel__title--hidden">Прогноз погоды с днями на выбор</h6>
     </section>
   </main>
 
-  <!-- Карусель -->
-
-  <section class="carousel">
-  </section>
-
-  <!-- Футер   -->
-
   <footer class="footer">
   </footer>
-
-
-
+  <script src="./script.js"></script>
 </body>
 
 </html>
