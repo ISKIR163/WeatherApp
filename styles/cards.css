@@ -6,12 +6,63 @@
 .cards__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--gap16);
 }
 
 .cards__item {
   width: 158px;
   height: 196px;
-  border-radius: 8px;
+  border-radius: var(--border-radius8);
   background: #f5f4f466;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap16);
+}
+
+.cards__item-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #202020;
+}
+
+.cards__item-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.cards__item-value {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  color: #202020;
+  text-align: center;
+}
+
+.cards__item-bar {
+  display: grid;
+  align-items: center;
+  gap: var(--gap8);
+}
+
+.cards__item-descriptions {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #393939;
+  text-align: center;
+}
+
+.two-text {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #393939;
+  text-align: center;
 }

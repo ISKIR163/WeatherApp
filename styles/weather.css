@@ -10,7 +10,7 @@
 .weather__card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--gap8);
 }
 
 .weather__city {
@@ -21,23 +21,14 @@
   color: var(--basic);
 }
 
-.weather__day {
+.weather__day,
+.weather__state-description,
+.weather__time,
+.weather__details-feeling {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   text-align: center;
-  font-variant-numeric: lining-nums;
-  font-feature-settings: "lnum";
-  color: var(--basic);
-}
-
-.weather__time {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  text-align: center;
-  font-variant-numeric: lining-nums;
-  font-feature-settings: "lnum";
   color: var(--basic);
 }
 
@@ -51,42 +42,24 @@
   font-size: 112px;
   line-height: 112px;
   text-align: center;
-  font-variant-numeric: lining-nums;
-  font-feature-settings: "lnum";
   color: var(--basic);
 }
 
 .weather__details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--gap8);
 }
 
 .weather__state {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--gap8);
 }
 
 .weather__state-icon {
   width: 24px;
   height: 24px;
   background-image: url(../images/cloudy.svg);
-}
-
-.weather__state-description {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: var(--basic);
-}
-
-.weather__details-feeling {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  text-align: center;
-  font-variant-numeric: lining-nums;
-  color: var(--basic);
 }

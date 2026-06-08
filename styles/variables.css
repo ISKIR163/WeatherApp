@@ -1,12 +1,19 @@
 :root {
   --main-font: Raleway, Arial, sans-serif;
 
+  /* GAP */
+
+  --gap8: 8px;
+  --gap16: 16px;
+
+  /* BORDER */
+
+  --border-radius8: 8px;
+
   /* BLUR */
 
   --color-blur10: #7070701a;
-  --blur10: blur(10px);
   --blur25: blur(25px);
-  --blur50: blur(50px);
 
   /* COLOR */
 
