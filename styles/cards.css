@@ -66,3 +66,22 @@
   color: #393939;
   text-align: center;
 }
+
+.custom-progress {
+  position: relative;
+  width: 126px;
+  height: 8px;
+  background: #f5f4f466;
+  border-radius: 4px;
+}
+
+.marker {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}

@@ -30,12 +30,12 @@
   border: none;
 }
 
-.search__reset {
+.search__submit {
   all: unset;
   display: none;
   cursor: pointer;
 }
 
-.search__reset:hover .search__icon--cross {
+.search__submit:hover .search__icon--cross {
   color: var(--search-btn-cross-hover);
 }

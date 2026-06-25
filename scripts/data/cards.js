@@ -1,9 +1,10 @@
-const weatherData = [
+const cardsData = [
   {
     title: "Влажность",
-    icon: "./icons/humidity.svg",
+    icon: "./icons/humidity.png",
     value: "75 %",
-    progressBar: "./value-icons/humidity-75.svg",
+    progressBar: "75",
+    gradient: null,
     text1: null,
     text2: null,
     textMin: "0%",
@@ -11,9 +12,10 @@ const weatherData = [
   },
   {
     title: "Давление",
-    icon: "./icons/barometr.svg",
+    icon: "./icons/barometr.png",
     value: "761",
-    progressBar: "./value-icons/barometr-761.svg",
+    progressBar: "76.1",
+    gradient: 1,
     text1: "Повышенное",
     text2: null,
     textMin: null,
@@ -21,9 +23,10 @@ const weatherData = [
   },
   {
     title: "Видимость",
-    icon: "./icons/visibility.svg",
+    icon: "./icons/visibility.png",
     value: "28 км",
-    progressBar: "./value-icons/visibility-25.svg",
+    progressBar: "28",
+    gradient: null,
     text1: "Нормальная",
     text2: null,
     textMin: null,
@@ -31,9 +34,10 @@ const weatherData = [
   },
   {
     title: "Рассвет",
-    icon: "./icons/sunrise.svg",
+    icon: "./icons/sunrise.png",
     value: "8:42",
     progressBar: null,
+    gradient: null,
     text1: "Прошло: ",
     text2: "02:47",
     textMin: null,
@@ -41,9 +45,10 @@ const weatherData = [
   },
   {
     title: "Закат",
-    icon: "./icons/sunset.svg",
+    icon: "./icons/sunset.png",
     value: "16:37",
     progressBar: null,
+    gradient: null,
     text1: "Осталось: ",
     text2: "05:08",
     textMin: null,
@@ -51,12 +56,15 @@ const weatherData = [
   },
   {
     title: "Сила ветра",
-    icon: "./icons/vane.svg",
+    icon: "./icons/airplane.png",
     value: "2 м/с",
     progressBar: null,
+    gradient: null,
     text1: "Северо-",
     text2: "западный",
     textMin: null,
     textMax: null,
   },
 ];
+
+export default cardsData;

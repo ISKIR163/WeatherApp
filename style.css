@@ -9,11 +9,14 @@
 html {
   min-width: 1280px;
   min-height: 924px;
-  background-image: url(./public/background-cloudy.jpg);
+  background-image: url(./public/background-cloudy.webp);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center center;
   background-attachment: fixed;
   background-size: cover;
+  display: grid;
+  place-items: center;
+  height: 100vh;
 }
 
 * {
@@ -26,7 +29,7 @@ html {
   font-feature-settings: "lnum";
 }
 
-header {
+.header {
   width: 1120px;
   height: 112px;
   padding: 32px;
@@ -39,7 +42,7 @@ header {
   position: relative;
 }
 
-body {
+.body {
   width: 1120px;
   margin: 32px auto;
   background: #7070701a;
@@ -56,11 +59,7 @@ body {
   gap: 16px;
 }
 
-.visually-hidden,
-.search__submit--hidden,
-.weather__title--hidden,
-.cards__title--hidden,
-.carousel__title--hidden {
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;

@@ -5,31 +5,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
+  <link rel="icon" href="./images/favicon.png">
   <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
-  <header>
-    <a class="logo" href="index.html" aria-label="переход на главную страницу">
+<body class="body">
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="Переход на главную страницу">
       <svg class="logo__img" width="192" height="48" viewBox="0 0 192 48" aria-hidden="true">
         <use href="./sprites.svg#logo"></use>
       </svg>
     </a>
     <search>
       <form class="search" action="#">
-        <label class="visually-hidden" for="searchInput">Поиск по сайту</label>
-        <input class="search__input" id="input" type="text" name="text" placeholder="Поиск по городу"
+        <label class="visually-hidden" for="search__input">Поиск по сайту</label>
+        <input class="search__input" id="search__input" type="text" name="text" placeholder="Поиск по городу"
           autocomplete="off">
-        <button class="search__submit search__submit--hidden" type="submit"
-          aria-label="отправка заполненого поля поиска"></button>
-        <svg class="search__icon search__icon--loupe" id="loupe" width="24" height="24" viewBox="0 0 24 24">
-          <use href="./sprites.svg#loupe"></use>
-        </svg>
-        <button class="search__reset" id="cross" type="reset" aria-label="очистка поля поиска">
+        <button class="search__submit" id="cross" type="button" aria-label="Очистить поле поиска">
           <svg class="search__icon search__icon--cross" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
             <use href="./sprites.svg#cross"></use>
           </svg>
         </button>
+        <svg class="search__icon search__icon--loupe" id="loupe" width="24" height="24" viewBox="0 0 24 24">
+          <use href="./sprites.svg#loupe"></use>
+        </svg>
       </form>
     </search>
   </header>
@@ -37,9 +36,9 @@
     <div class="container">
       <h1 class="visually-hidden">Прогноз погоды на неделю</h1>
       <section class="weather">
-        <h3 class="weather__title weather__title--hidden">Прогноз погоды на сегодня</h3>
+        <h2 class="visually-hidden">Прогноз погоды на сегодня</h2>
         <div class="weather__card">
-          <h2 class="weather__city">Москва</h2>
+          <h3 class="weather__city">Москва</h3>
           <time class="weather__day" datetime="2026-01-06">Суббота, 06 января</time>
           <time class="weather__time" datetime="11:29">11:29</time>
         </div>
@@ -48,27 +47,26 @@
         </div>
         <div class="weather__details">
           <div class="weather__state">
-            <div class="weather__state-icon"></div>
+            <img class="weather__state-icon" src="./images/broken clouds.png" width="24" height="24" alt="Облачно">
             <span class="weather__state-description">Облачно</span>
           </div>
           <span class="weather__details-feeling">Ощущается как -11°</span>
         </div>
       </section>
       <section class="cards">
-        <h3 class="cards__title cards__title--hidden">Прогноз погоды подробный на неделю</h3>
+        <h2 class="visually-hidden">Прогноз погоды подробный на неделю</h2>
         <ul id="weatherCards" class="cards__list">
-          <script src="./data.js"></script>
-          <script src="./main.js"></script>
         </ul>
       </section>
     </div>
     <section class="carousel">
-      <h3 class="carousel__title carousel__title--hidden">Прогноз погоды с днями на выбор</h3>
+      <h2 class="visually-hidden">Прогноз погоды с днями на выбор</h2>
     </section>
   </main>
   <footer class="footer">
+    <div class="value-label" id="valueDisplay"></div>
   </footer>
-  <script src="./script.js"></script>
+  <script src="./index.js" type="module"></script>
 </body>
 
 </html>
