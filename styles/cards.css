@@ -12,16 +12,18 @@
 .cards__item {
   width: 158px;
   height: 196px;
-  border-radius: var(--border-radius8);
-  background: #f5f4f466;
   padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--gap16);
+  border-radius: var(--border-radius8);
+  background: #f5f4f466;
 }
 
 .cards__item-title {
+  position: relative;
+  top: 1px;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -34,11 +36,11 @@
 }
 
 .cards__item-value {
+  text-align: center;
   font-weight: 400;
   font-size: 32px;
   line-height: 32px;
   color: #202020;
-  text-align: center;
 }
 
 .cards__item-bar {
@@ -48,31 +50,31 @@
 }
 
 .cards__item-descriptions {
+  text-align: center;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
   color: #393939;
-  text-align: center;
 }
 
 .two-text {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  position: relative;
+  text-align: center;
   bottom: 8px;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
   color: #393939;
-  text-align: center;
 }
 
 .custom-progress {
   position: relative;
   width: 126px;
   height: 8px;
-  background: #f5f4f466;
   border-radius: 4px;
+  background: #f5f4f466;
 }
 
 .marker {
@@ -82,6 +84,6 @@
   transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
-  background: white;
   border-radius: 50%;
+  background: white;
 }

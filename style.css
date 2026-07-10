@@ -7,8 +7,6 @@
 @import url(./styles/footer.css);
 
 html {
-  min-width: 1280px;
-  min-height: 924px;
   background-image: url(./public/background-cloudy.webp);
   background-repeat: no-repeat;
   background-position: center center;
@@ -16,11 +14,10 @@ html {
   background-size: cover;
   display: grid;
   place-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 * {
-  font-family: var(--main-font);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -30,30 +27,33 @@ html {
 }
 
 .header {
-  width: 1120px;
-  height: 112px;
   padding: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo__img {
-  position: relative;
+.logo {
+  display: flex;
+  align-items: center;
 }
 
 .body {
-  width: 1120px;
   margin: 32px auto;
+  font-family: var(--main-font);
+  border-radius: var(--border-radius8);
   background: #7070701a;
   backdrop-filter: var(--blur25);
-  border-radius: var(--border-radius8);
+}
+
+.fallbackMessage {
+  text-align: center;
+  background-color: rgb(253, 107, 107);
+  color: rgb(185, 40, 40);
 }
 
 .container {
   display: flex;
-  width: 1120px;
-  height: 472px;
   margin: 0 auto;
   padding: 32px;
   gap: 16px;

@@ -1,5 +1,5 @@
-import chichi from "./scripts/search.js";
-import gaga from "./scripts/main.js";
+import initSearch from "./scripts/search.js";
+import renderCards from "./scripts/main.js";
 
-chichi();
-gaga();
+initSearch();
+renderCards();

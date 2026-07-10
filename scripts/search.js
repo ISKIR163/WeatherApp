@@ -1,12 +1,13 @@
 // Получаем ссылки на элементы DOM по их идентификаторам
-var input = document.getElementById("search__input");
-var loupe = document.getElementById("loupe");
-var cross = document.getElementById("cross");
+const input = document.getElementById("searchInput");
+const loupe = document.getElementById("loupe");
+const cross = document.getElementById("cross");
 
-var isInputFocused = false;
+// Выбор видимости между лупой и крестиком
+let isInputFocused = false;
 function loupeORcross() {
-  var currentText = input.value;
-  var hasText = currentText.length > 0;
+  const currentText = input.value;
+  const hasText = currentText.length > 0;
   if (hasText) {
     loupe.style.display = "none";
     cross.style.display = "block";
@@ -33,12 +34,12 @@ function onInputBlur() {
   loupeORcross();
 }
 
-// Функция debounce ограничивает частоту вызовов переданной функции.
+// Функция debounce ограничивает частоту вызовов переданной функции в консоль
 function debounce(fn, delay) {
-  var timer;
+  let timer;
   return function () {
-    var args = arguments;
-    var context = this;
+    const args = arguments;
+    const context = this;
     clearTimeout(timer);
     timer = setTimeout(function () {
       fn.apply(context, args);
@@ -46,8 +47,8 @@ function debounce(fn, delay) {
   };
 }
 
-//  Основная экспортируемая функция, которая инициализирует поведение.
-export function chichi() {
+//  Основная экспортируемая функция, которая инициализирует поведение строки поиска
+export function initSearch() {
   cross.style.color = "var(--search-btn-cross)";
 
   // Добавляем обработчики событий фокуса и потери фокуса (ОДИН РАЗ)
@@ -58,7 +59,7 @@ export function chichi() {
   loupeORcross();
 
   // Создаём дебаунс-функцию для логирования значения поля ввода
-  var debouncedLog = debounce(function (value) {
+  const debouncedLog = debounce(function (value) {
     console.log(value);
   }, 1500);
 
@@ -81,4 +82,4 @@ export function chichi() {
   });
 }
 
-export default chichi;
+export default initSearch;

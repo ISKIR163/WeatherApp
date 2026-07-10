@@ -1,8 +1,8 @@
 .weather {
-  display: flex;
-  flex-direction: column;
   width: 534px;
   height: 408px;
+  display: flex;
+  flex-direction: column;
   gap: 64px;
   padding: 8px;
 }
@@ -14,10 +14,10 @@
 }
 
 .weather__city {
+  text-align: center;
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  text-align: center;
   color: var(--basic);
 }
 
@@ -25,10 +25,10 @@
 .weather__state-description,
 .weather__time,
 .weather__details-feeling {
+  text-align: center;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  text-align: center;
   color: var(--basic);
 }
 
@@ -38,10 +38,10 @@
 }
 
 .weather__temp-value {
+  text-align: center;
   font-weight: 700;
   font-size: 112px;
   line-height: 112px;
-  text-align: center;
   color: var(--basic);
 }
 

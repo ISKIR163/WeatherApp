@@ -4,12 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Прогноз погоды — актуальные метеоданные по городам">
   <title>Weather App</title>
   <link rel="icon" href="./images/favicon.png">
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body class="body">
+  <noscript>
+    <div class="fallbackMessage">
+      Внимание! На сайте отключен JavaScript. Для полной функциональности пожалуйста, включите его в настройках
+      браузера.
+    </div>
+  </noscript>
   <header class="header">
     <a class="logo" href="index.html" aria-label="Переход на главную страницу">
       <svg class="logo__img" width="192" height="48" viewBox="0 0 192 48" aria-hidden="true">
@@ -17,9 +24,9 @@
       </svg>
     </a>
     <search>
-      <form class="search" action="#">
-        <label class="visually-hidden" for="search__input">Поиск по сайту</label>
-        <input class="search__input" id="search__input" type="text" name="text" placeholder="Поиск по городу"
+      <form id="myForm" class="search" action="#" onsubmit="event.preventDefault();">
+        <label class="visually-hidden" for="search__input">Поиск по городу</label>
+        <input class="search__input" id="searchInput" type="text" name="text" required placeholder="Поиск по городу"
           autocomplete="off">
         <button class="search__submit" id="cross" type="button" aria-label="Очистить поле поиска">
           <svg class="search__icon search__icon--cross" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
@@ -47,14 +54,14 @@
         </div>
         <div class="weather__details">
           <div class="weather__state">
-            <img class="weather__state-icon" src="./images/broken clouds.png" width="24" height="24" alt="Облачно">
+            <img class="weather__state-icon" src="./images/broken-clouds.png" width="24" height="24" alt="Облачно">
             <span class="weather__state-description">Облачно</span>
           </div>
           <span class="weather__details-feeling">Ощущается как -11°</span>
         </div>
       </section>
       <section class="cards">
-        <h2 class="visually-hidden">Прогноз погоды подробный на неделю</h2>
+        <h2 class="visually-hidden">Прогноз погоды подробный на день</h2>
         <ul id="weatherCards" class="cards__list">
         </ul>
       </section>
