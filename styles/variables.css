@@ -5,6 +5,7 @@
 
   --gap8: 8px;
   --gap16: 16px;
+  --gap32: 32px;
 
   /* BORDER */
 
@@ -17,9 +18,14 @@
   /* COLOR */
 
   --basic: #f5f4f4;
+  --forecastBtnDef: #a6a6a6;
+
+  /* COLOR SEARCH PANEL */
+
   --search-hover: #dadada;
   --search-active: #dadada;
   --search-background: #f5f4f466;
+
   --search-placeholder: #707070;
   --search-btn-cross: #707070;
   --search-btn-cross-hover: #202020;

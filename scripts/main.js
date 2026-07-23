@@ -1,28 +1,22 @@
-import cardsData from "./data/cards.js";
-import directionAngles from "./data/windDirection.js";
+// Импорт данных для генерации основных карточек
+import { cardsData, directionAngles } from "./data.js";
 
 // Создаем константы-шаблоны с помощью которых будем находить значения (HH:MM и H:MM) в (cards.js) для формирования тега <time> там где он нужен
 const pattern1 = /^\d{2}:\d{2}$/;
 const pattern2 = /^\d{1}:\d{2}$/;
 
-// Проходим по массиву объектов в (cards.js)
-export function renderCards() {
+// Проходим по массиву объектов cardsData в (data.js)
+export function renderCardsMain() {
   const container = document.getElementById("weatherCards");
   cardsData.forEach((card) => {
     // Проверяем требуется ли повернуть изображение в карточке по направлению ветра
     const directionKey = card.text2 ? `${card.text1}${card.text2}` : card.text1;
     const angle = directionAngles[directionKey] ?? 0;
 
-    // Создаем переменную для использования в теге <time>, которая будет добавлять "ноль" в начало datetime если в данных для заполнения карточек (cards.js) время записанно в формате H:MM
-    let zero1 = "";
-    if (pattern2.test(card.value)) {
-      zero1 = "0";
-    }
-
-    // Если в данных для заполнения карточек (cards.js) в ключе (value) значение (HH:MM или H:MM) - оборачиваем в семантический тег <time>
+    // Если в данных для заполнения есть время (card.value) согласно шаблонам (pattern1-2) - оборачиваем в семантический тег <time>. Добавляем padStart если card.value записан в формате H:HH
     let tagTimeOrSpan1 = "";
     if (pattern1.test(card.value) || pattern2.test(card.value)) {
-      tagTimeOrSpan1 = `<time class="cards__item-value" datetime="${zero1}${card.value}">${card.value}</time>`;
+      tagTimeOrSpan1 = `<time class="cards__item-value" datetime="${card.value.padStart(5, "0")}">${card.value}</time>`;
     } else {
       tagTimeOrSpan1 = `<span class="cards__item-value">${card.value}</span>`;
     }
@@ -34,24 +28,39 @@ export function renderCards() {
         "background: radial-gradient(50% 9453.13% at 50% 50%, rgba(84, 84, 84, 0.4) 0%, rgba(138, 138, 138, 0.4) 45.12%, #DADADA 100%, rgba(218, 218, 218, 0.4) 100%);";
     }
 
+    // Создаем переменную содержащую первые два символа из card.value, для позиционарования маркера прогресса
+    let progressBarValue = null;
+    if (card.progressBar != null) {
+      progressBarValue = card.value.slice(0, 2);
+    }
+
+    // Проверяем не выходят ли значения card.progressBar за диапазон (например -1000 или +1000) и корректируем крайнее положения маркера в крайних точках чтобы он не обрезался
+    let max = 97;
+    let min = 3;
+    if (progressBarValue <= 3 && progressBarValue != null) {
+      progressBarValue = min;
+    } else if (progressBarValue >= 97 && progressBarValue != null) {
+      progressBarValue = max;
+    }
+
     // Проверяем нужен ли прогресс бар и верстаем его вместе с маской пустой области вокруг белого маркера
-    const progressBarNotNull = card.progressBar
+    const progressBarNotNull = progressBarValue
       ? `<div class="custom-progress" style="${progressBarStyle};
           mask-image: radial-gradient(
-            circle at ${card.progressBar}%,
+            circle at ${progressBarValue}%,
             black 4px,
             transparent 4.5%,
             transparent 6%,
             black 6px);"
           );
           -webkit-mask-image: radial-gradient(
-            circle at ${card.progressBar}%,
+            circle at ${progressBarValue}%,
             black 4px,
             transparent 4.5%,
             transparent 6%,
             black 6px);"
           );>
-          <div class="marker" style="left: ${card.progressBar}%;"></div>
+          <div class="marker" style="left: ${progressBarValue}%;"></div>
         </div>`
       : "";
 
@@ -61,16 +70,10 @@ export function renderCards() {
     const textMinNotNull = card.textMin ? `${card.textMin}` : "";
     const textMaxNotNull = card.textMax ? `${card.textMax}` : "";
 
-    // Создаем переменную для использования в теге <time>, которая будет добавлять "ноль" в начало datetime если в данных для заполнения карточек (cards.js) время записанно в формате H:MM. Также "ноль" при необходимости добавится в текстовое содержимое тега <time>
-    let zero2 = "";
-    if (pattern2.test(card.text2)) {
-      zero2 = "0";
-    }
-
-    // Если в данных для заполнения есть время (card.text2) согласно шаблону (pattern) - оборачиваем в семантический тег <time>
+    // Если в данных для заполнения есть время (card.text2) согласно шаблонам (pattern1-2) - оборачиваем в семантический тег <time>. Добавляем padStart если card.text2 записан в формате H:HH
     let tagTimeOrSpan2 = "";
     if (pattern1.test(card.text2) || pattern2.test(card.text2)) {
-      tagTimeOrSpan2 = `<time class="cards__item-descriptions" datetime="${zero2}${card.text2}">${text1NotNull}${zero2}${text2NotNull}</time>`;
+      tagTimeOrSpan2 = `<time class="cards__item-descriptions" datetime="${card.text2.padStart(5, "0")}">${text1NotNull}${text2NotNull.padStart(5, "0")}</time>`;
     } else {
       tagTimeOrSpan2 = `<span class="cards__item-descriptions">${text1NotNull}${text2NotNull}</span>`;
     }
@@ -96,5 +99,64 @@ export function renderCards() {
   });
 }
 
-// Экспортируем. Используется в (index.js)
-export default renderCards;
+// Функция преобразования стандартной даты получаемой с сервера в нужный по макету (используется в function renderCardsCarouselDay())
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  const days = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+  const months = [
+    "янв.",
+    "фев.",
+    "мар.",
+    "апр.",
+    "мая",
+    "июн.",
+    "июл.",
+    "авг.",
+    "сен.",
+    "окт.",
+    "ноя.",
+    "дек.",
+  ];
+  const dayOfWeek = days[date.getDay()];
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = months[date.getMonth()];
+  return `${dayOfWeek}, ${day} ${month}`;
+}
+
+// Импорт данных для генерации карточек в карусели
+import { carouselDataHour, carouselDataDay } from "./data.js";
+
+// Проходим по массиву объектов carouselDataHour в (data.js)
+export function renderCardsCarouselHour() {
+  const container = document.getElementById("carouselCardsH");
+  carouselDataHour.forEach((card) => {
+    // Верстаем карточки в карусели
+    const cardHTML = `
+<li class="carousel__item">
+  <time class="carousel__item-datetime" datetime="${card.time}">${card.time}</time> 
+  <img class="carousel__item-img" src="../images/weather-conditions/${card.condition}.png" width="32" height="32" alt="Облачно">
+  <span class="carousel__item-degress">${card.temperature_celsius}°</span>
+</li>
+`;
+    // Команда вставки сгенерированных строк в HTML документ
+    container.insertAdjacentHTML("beforeend", cardHTML);
+  });
+}
+
+// Проходим по массиву объектов carouselDataDay в (data.js)
+export function renderCardsCarouselDay() {
+  const container = document.getElementById("carouselCardsD");
+  carouselDataDay.forEach((card) => {
+    const dateСhange = formatDate(card.date);
+    // Верстаем карточки в карусели
+    const cardHTML = `
+<li class="carousel__item">
+  <time class="carousel__item-datetime" datetime="${card.date}">${dateСhange}</time> 
+  <img class="carousel__item-img" src="../images/weather-conditions/${card.condition}.png" width="32" height="32" alt="Облачно">
+  <span class="carousel__item-degress">от ${card.day_temperature}° до ${card.night_temperature}°</span>
+</li>
+`;
+    // Команда вставки сгенерированных строк в HTML документ
+    container.insertAdjacentHTML("beforeend", cardHTML);
+  });
+}

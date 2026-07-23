@@ -7,7 +7,7 @@
 @import url(./styles/footer.css);
 
 html {
-  background-image: url(./public/background-cloudy.webp);
+  background-image: url(./public/background-cloudy.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -69,4 +69,23 @@ html {
   border: 0;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__description {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #f5f4f4;
+}
+
+.footer__link {
+  color: #f5f4f4;
 }

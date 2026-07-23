@@ -56,30 +56,24 @@ export function initSearch() {
   input.addEventListener("blur", onInputBlur);
 
   // Вызываем функцию обновления иконок, чтобы сразу установить правильное состояние
-  loupeORcross();
+  // loupeORcross();
 
   // Создаём дебаунс-функцию для логирования значения поля ввода
   const debouncedLog = debounce(function (value) {
     console.log(value);
-  }, 1500);
+  }, 500);
 
   // Добавляем обработчик события ввода текста
   input.addEventListener("input", function () {
-    // Обновляем иконки при каждом вводе
-    loupeORcross();
     // Вызываем дебаунс-функцию с текущим значением поля
     debouncedLog(input.value);
   });
 
   // Добавляем обработчик клика на крестик для очистки поля
   cross.addEventListener("click", function () {
-    // Сначала обновляем иконки (на случай, если они не синхронизированы)
-    loupeORcross();
     // Очищаем поле ввода
     input.value = "";
     // После очистки снова обновляем иконки, чтобы лупа появилась, а крестик исчез
     loupeORcross();
   });
 }
-
-export default initSearch;
