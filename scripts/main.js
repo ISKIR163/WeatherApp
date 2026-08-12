@@ -4,6 +4,7 @@ import { cardsData, directionAngles } from "./data.js";
 // Создаем константы-шаблоны с помощью которых будем находить значения (HH:MM и H:MM) в (cards.js) для формирования тега <time> там где он нужен
 const pattern1 = /^\d{2}:\d{2}$/;
 const pattern2 = /^\d{1}:\d{2}$/;
+const pattern3 = /^\d+%$/;
 
 // Проходим по массиву объектов cardsData в (data.js)
 export function renderCardsMain() {
@@ -67,32 +68,35 @@ export function renderCardsMain() {
     // Проверяем какие данные выводить после прогресс бара (или того что идет вместо него) и формируем их
     const text1NotNull = card.text1 ? `${card.text1}` : "";
     const text2NotNull = card.text2 ? `${card.text2}` : "";
-    const textMinNotNull = card.textMin ? `${card.textMin}` : "";
-    const textMaxNotNull = card.textMax ? `${card.textMax}` : "";
+    // const textMinNotNull = card.textMin ? `${card.textMin}` : "";
+    // const textMaxNotNull = card.textMax ? `${card.textMax}` : "";
 
     // Если в данных для заполнения есть время (card.text2) согласно шаблонам (pattern1-2) - оборачиваем в семантический тег <time>. Добавляем padStart если card.text2 записан в формате H:HH
     let tagTimeOrSpan2 = "";
     if (pattern1.test(card.text2) || pattern2.test(card.text2)) {
       tagTimeOrSpan2 = `<time class="cards__item-descriptions" datetime="${card.text2.padStart(5, "0")}">${text1NotNull}${text2NotNull.padStart(5, "0")}</time>`;
+    } else if (pattern3.test(card.text1) && pattern3.test(card.text2)) {
+      tagTimeOrSpan2 = `<div class="cards__item-minMax"> <span class="cards__item-descriptions">${text1NotNull}</span>
+      <span class="cards__item-descriptions">${text2NotNull}</span>
+      </div>`;
     } else {
       tagTimeOrSpan2 = `<span class="cards__item-descriptions">${text1NotNull}${text2NotNull}</span>`;
     }
 
     // Верстаем карточки
+
     const cardHTML = `
-<li class="cards__item">
-  <h3 class="cards__item-title">${card.title}</h3>
-  <img class="cards__item-icon" style="transform: rotate(${angle}deg)" src="${card.icon}">
-  ${tagTimeOrSpan1}
-  <div class="cards__item-bar">${progressBarNotNull}
-    ${tagTimeOrSpan2}
-    <div class="two-text">
-      <span> ${textMinNotNull}</span>
-      <span> ${textMaxNotNull}</span>
-    </div>
-  </div>
-</li>
-`;
+    <li class="cards__item">
+      <div class="cards__item-container">
+        <h3 class="cards__item-title">${card.title}</h3>
+        <img class="cards__item-icon" style="transform: rotate(${angle}deg)" src="${card.icon}">
+        ${tagTimeOrSpan1}
+      </div>
+      <div class="cards__item-bar">${progressBarNotNull}
+        ${tagTimeOrSpan2}
+      </div>
+    </li>
+    `;
 
     // Команда вставки сгенерированных строк в HTML документ
     container.insertAdjacentHTML("beforeend", cardHTML);
@@ -134,7 +138,7 @@ export function renderCardsCarouselHour() {
     const cardHTML = `
 <li class="carousel__item">
   <time class="carousel__item-datetime" datetime="${card.time}">${card.time}</time> 
-  <img class="carousel__item-img" src="../images/weather-conditions/${card.condition}.png" width="32" height="32" alt="Облачно">
+  <img class="carousel__item-img" src="./images/weather-conditions/${card.condition}.png" width="32" height="32" alt="Облачно">
   <span class="carousel__item-degress">${card.temperature_celsius}°</span>
 </li>
 `;
@@ -152,7 +156,7 @@ export function renderCardsCarouselDay() {
     const cardHTML = `
 <li class="carousel__item">
   <time class="carousel__item-datetime" datetime="${card.date}">${dateСhange}</time> 
-  <img class="carousel__item-img" src="../images/weather-conditions/${card.condition}.png" width="32" height="32" alt="Облачно">
+  <img class="carousel__item-img" src="./images/weather-conditions/${card.condition}.png" width="32" height="32" alt="Облачно">
   <span class="carousel__item-degress">от ${card.day_temperature}° до ${card.night_temperature}°</span>
 </li>
 `;

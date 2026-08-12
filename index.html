@@ -19,12 +19,15 @@
   </noscript>
   <header class="header">
     <a class="logo" href="index.html" aria-label="Переход на главную страницу">
-      <svg class="logo__img" width="192" height="48" viewBox="0 0 192 48" aria-hidden="true">
-        <use href="./sprites.svg#logo"></use>
+      <svg class="logo__img logo__img--big" width="192" height="48" viewBox="0 0 192 48" aria-hidden="true">
+        <use href="./sprites.svg#logoBig"></use>
+      </svg>
+      <svg class="logo__img logo__img--small" width="54" height="48" viewBox="0 0 54 48" aria-hidden="true">
+        <use href="./sprites.svg#logoSmall"></use>
       </svg>
     </a>
-    <search>
-      <form id="myForm" class="search" action="#" onsubmit="event.preventDefault();">
+    <search class="search">
+      <form id="myForm" class="search-form" action="#">
         <label class="visually-hidden" for="searchInput">Поиск по городу</label>
         <input class="search__input" id="searchInput" type="text" name="text" required placeholder="Поиск по городу"
           autocomplete="off">
@@ -33,6 +36,7 @@
             <use href="./sprites.svg#cross"></use>
           </svg>
         </button>
+        <button class="visually-hidden" type="submit">Найти</button>
         <svg class="search__icon search__icon--loupe" id="loupe" width="24" height="24" viewBox="0 0 24 24">
           <use href="./sprites.svg#loupe"></use>
         </svg>
@@ -45,7 +49,7 @@
       <section class="weather">
         <h2 class="visually-hidden">Прогноз погоды на сегодня</h2>
         <div class="weather__card">
-          <h3 class="weather__city">Москва</h3>
+          <h3 class="weather__city">Кременчуг-константиновское</h3>
           <time class="weather__day" datetime="2024-01-06">Суббота, 06 января</time>
           <time class="weather__time" datetime="11:29">11:29</time>
         </div>
@@ -56,7 +60,7 @@
           <div class="weather__state">
             <img class="weather__state-icon" src="./images/weather-conditions/broken-clouds.png" width="24" height="24"
               alt="Облачно">
-            <span class="weather__state-description">Облачно</span>
+            <span class="weather__state-description">Облачно с прояснениями</span>
           </div>
           <span class="weather__details-feeling">Ощущается как -11°</span>
         </div>
@@ -67,10 +71,8 @@
         </ul>
       </section>
     </div>
-
     <section class="slider">
       <h2 class="visually-hidden">Прогноз погоды с днями на выбор</h2>
-
       <div class="interval">
         <span class="interval__forecast" aria-hidden="true">Прогноз: </span>
         <ul class="interval__switch">
@@ -87,99 +89,23 @@
           </li>
         </ul>
       </div>
-
       <div class="carousel">
         <button class="carousel__btn carousel__btn--left" type="button" aria-label="Кнопка влево">
           <svg class="carousel__btn-img" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
             <use href="./sprites.svg#left"></use>
           </svg>
         </button>
-
         <ul id="carouselCardsH" class="carousel__cards">
-          <!-- <li class="carousel__item">
-            <time class="gaga" datetime="12:00">12:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-7°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="15:00">15:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-5°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="18:00">18:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-7°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="21:00">21:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-9°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="00:00">00:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-11°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="00:00">00:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-11°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="00:00">00:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-11°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="00:00">00:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-11°</span>
-          </li>
-          <li class="carousel__item">
-            <time datetime="00:00">00:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span>-11°</span>
-          </li> -->
         </ul>
-
         <ul id="carouselCardsD" class="carousel__cards carousel__cards--hidden">
-          <!-- <li class="carousel__item">
-            <time class="gaga" datetime="07.01.2024">Вс, 07 янв.</time>
-            <img src="./images/few-clouds.png" width="32" height="32" alt="Облачно">
-            <span class="fafa">от -17° до -11°</span>
-          </li>
-          <li class="carousel__item">
-            <time class="gaga" datetime="08.01.2024">Пн, 08 янв.</time>
-            <img src="./images/few-clouds.png" width="32" height="32" alt="Облачно">
-            <span class="fafa">от -16° до -8°</span>
-          </li>
-          <li class="carousel__item">
-            <time class="gaga" datetime="09.01.2024">Вт, 09 янв.</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span class="fafa">от -8° до -2°</span>
-          </li>
-          <li class="carousel__item">
-            <time class="gaga" datetime="00:00">00:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span class="fafa">0°</span>
-          </li>
-          <li class="carousel__item">
-            <time class="gaga" datetime="00:00">00:00</time>
-            <img src="./images/broken-clouds.png" width="32" height="32" alt="Облачно">
-            <span class="fafa">0°</span>
-          </li> -->
         </ul>
-
         <button class="carousel__btn carousel__btn--right" type="button" aria-label="Кнопка вправо">
           <svg class="carousel__btn-img" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
             <use href="./sprites.svg#right"></use>
           </svg>
         </button>
       </div>
-
     </section>
-
   </main>
   <footer class="footer">
     <p class="footer__description">Проект выполнен в рамках стажировки 

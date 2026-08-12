@@ -1,4 +1,5 @@
 // Получаем ссылки на элементы DOM по их идентификаторам
+const form = document.getElementById("myForm");
 const input = document.getElementById("searchInput");
 const loupe = document.getElementById("loupe");
 const cross = document.getElementById("cross");
@@ -50,6 +51,10 @@ function debounce(fn, delay) {
 //  Основная экспортируемая функция, которая инициализирует поведение строки поиска
 export function initSearch() {
   cross.style.color = "var(--search-btn-cross)";
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+  });
 
   // Добавляем обработчики событий фокуса и потери фокуса (ОДИН РАЗ)
   input.addEventListener("focus", onInputFocus);

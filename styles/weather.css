@@ -1,59 +1,112 @@
 .weather {
-  width: 534px;
-  height: 408px;
+  width: 100%;
+  min-width: 311px;
   display: flex;
   flex-direction: column;
-  gap: 64px;
-  padding: 8px;
+  gap: 1rem;
 }
-
+@media (min-width: 768px) {
+  .weather {
+    gap: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .weather {
+    max-width: 534px;
+    gap: 3rem;
+    padding: 8px;
+  }
+}
+@media (min-width: 1280px) {
+  .weather {
+    gap: 4rem;
+  }
+}
 .weather__card {
   display: flex;
   flex-direction: column;
-  gap: var(--gap8);
+  gap: 4px;
+  @media (min-width: 768px) {
+    gap: 6px;
+  }
 }
 
 .weather__city {
   text-align: center;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 1rem;
+  line-height: 1.25;
   color: var(--basic);
+}
+@media (min-width: 768px) {
+  .weather__city {
+    font-size: 1.5rem;
+    line-height: 1.334;
+  }
+}
+@media (min-width: 1024px) {
+  .weather__city {
+  }
 }
 
 .weather__day,
-.weather__state-description,
 .weather__time,
+.weather__state-description,
 .weather__details-feeling {
   text-align: center;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 0.875rem;
+  line-height: 1.143;
   color: var(--basic);
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
 }
 
 .weather__temp {
   display: flex;
   flex-direction: column;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--basic);
+  @media (min-width: 768px) {
+    font-size: 7rem;
+    line-height: 1;
+  }
 }
 
 .weather__temp-value {
   text-align: center;
-  font-weight: 700;
-  font-size: 112px;
-  line-height: 112px;
-  color: var(--basic);
 }
 
 .weather__details {
   display: flex;
   flex-direction: column;
-  gap: var(--gap8);
+  gap: 4px;
+}
+@media (min-width: 1024px) {
+  .weather__details {
+    gap: 8px;
+  }
+}
+
+.weather__state-icon {
+  width: 16px;
+  height: 16px;
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .weather__state {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--gap8);
+  gap: 4px;
+  @media (min-width: 768px) {
+    gap: 6px;
+  }
 }
