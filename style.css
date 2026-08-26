@@ -29,7 +29,7 @@
 
 html {
   font-size: 16px;
-  background-image: url(./public/background-cloudy.jpg);
+  background-image: url(./images/background-cloudy.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;

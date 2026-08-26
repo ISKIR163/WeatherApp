@@ -61,6 +61,7 @@
 }
 
 .search__icon {
+  display: block;
   width: 16px;
   height: 16px;
   @media (min-width: 768px) {
@@ -69,10 +70,26 @@
   }
 }
 
+.search__icon--cross {
+  color: var(--search-btn-cross);
+}
+
+.search__icon--loupe {
+  display: block;
+}
+
 .search__submit {
   all: unset;
   display: none;
   cursor: pointer;
+}
+
+.search-form--clear .search__submit {
+  display: block;
+}
+
+.search-form--clear .search__icon--loupe {
+  display: none;
 }
 
 .search__submit:hover .search__icon--cross {

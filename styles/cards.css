@@ -62,6 +62,7 @@
 .cards__item-icon {
   width: 24px;
   height: 24px;
+  transform: rotate(var(--icon-rotate, 0deg));
   @media (min-width: 768px) {
     width: 32px;
     height: 32px;
@@ -102,25 +103,54 @@
   }
 }
 
+.custom-progress-wrap {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  isolation: isolate;
+}
+
 .custom-progress {
   position: relative;
+  z-index: 1;
+  width: 100%;
   height: 6px;
   border-radius: 4px;
   background: #f5f4f466;
-  @media (min-width: 768px) {
-    height: 8px;
-  }
+  -webkit-mask-image: radial-gradient(
+    circle at var(--marker-pos, 0%),
+    transparent 0,
+    transparent 5px,
+    #000 5.5px
+  );
+  mask-image: radial-gradient(
+    circle at var(--marker-pos, 0%),
+    transparent 0,
+    transparent 5px,
+    #000 5.5px
+  );
 }
 
+.custom-progress--gradient {
+  background: radial-gradient(
+    50% 9453.13% at 50% 50%,
+    rgba(84, 84, 84, 0.4) 0%,
+    rgba(138, 138, 138, 0.4) 45.12%,
+    #dadada 100%,
+    rgba(218, 218, 218, 0.4) 100%
+  );
+}
 .marker {
   position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
+  z-index: 2;
+  top: 0;
+  left: var(--marker-pos, 0%);
+  transform: translateX(-50%);
   width: 6px;
   height: 6px;
-  border-radius: 50%;
-  background: white;
+  display: block;
+  pointer-events: none;
+  shape-rendering: geometricPrecision;
 }
 
 .cards__item-descriptions {

@@ -26,8 +26,20 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  @media (min-width: 768px) {
+}
+@media (min-width: 768px) {
+  .weather__card {
     gap: 6px;
+  }
+}
+@media (min-width: 1024px) {
+  .weather__card {
+    gap: 8px;
+  }
+}
+@media (min-width: 1280px) {
+  .weather__card {
+    gap: 8px;
   }
 }
 

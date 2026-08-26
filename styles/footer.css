@@ -6,12 +6,16 @@
   font-size: 0.75rem;
   line-height: 1.334;
   padding: 1rem;
-  @media (min-width: 768px) {
+}
+@media (min-width: 768px) {
+  .footer {
     font-size: 1rem;
     line-height: 1.25;
     padding: 1.5rem;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .footer {
     padding: 2rem;
   }
 }
@@ -22,5 +26,14 @@
 }
 
 .footer__link {
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  text-decoration-thickness: 1px;
   color: #f5f4f4;
+}
+@media (min-width: 768px) {
+  .footer__link {
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+  }
 }

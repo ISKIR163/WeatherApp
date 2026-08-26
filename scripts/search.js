@@ -1,41 +1,24 @@
-// Получаем ссылки на элементы DOM по их идентификаторам
 const form = document.getElementById("myForm");
 const input = document.getElementById("searchInput");
-const loupe = document.getElementById("loupe");
 const cross = document.getElementById("cross");
 
-// Выбор видимости между лупой и крестиком
 let isInputFocused = false;
+
 function loupeORcross() {
-  const currentText = input.value;
-  const hasText = currentText.length > 0;
-  if (hasText) {
-    loupe.style.display = "none";
-    cross.style.display = "block";
-  } else {
-    if (isInputFocused) {
-      loupe.style.display = "none";
-      cross.style.display = "block";
-    } else {
-      loupe.style.display = "block";
-      cross.style.display = "none";
-    }
-  }
+  const hasText = input.value.length > 0;
+  form.classList.toggle("search-form--clear", hasText || isInputFocused);
 }
 
-// Обработчик получения фокуса
 function onInputFocus() {
   isInputFocused = true;
   loupeORcross();
 }
 
-//  Обработчик потери фокуса
 function onInputBlur() {
   isInputFocused = false;
   loupeORcross();
 }
 
-// Функция debounce ограничивает частоту вызовов переданной функции в консоль
 function debounce(fn, delay) {
   let timer;
   return function () {
@@ -48,37 +31,25 @@ function debounce(fn, delay) {
   };
 }
 
-//  Основная экспортируемая функция, которая инициализирует поведение строки поиска
 export function initSearch() {
-  cross.style.color = "var(--search-btn-cross)";
-
   form.addEventListener("submit", function (event) {
     event.preventDefault();
   });
 
-  // Добавляем обработчики событий фокуса и потери фокуса (ОДИН РАЗ)
   input.addEventListener("focus", onInputFocus);
   input.addEventListener("blur", onInputBlur);
 
-  // Вызываем функцию обновления иконок, чтобы сразу установить правильное состояние
-  // loupeORcross();
-
-  // Создаём дебаунс-функцию для логирования значения поля ввода
   const debouncedLog = debounce(function (value) {
     console.log(value);
   }, 500);
 
-  // Добавляем обработчик события ввода текста
   input.addEventListener("input", function () {
-    // Вызываем дебаунс-функцию с текущим значением поля
+    loupeORcross();
     debouncedLog(input.value);
   });
 
-  // Добавляем обработчик клика на крестик для очистки поля
   cross.addEventListener("click", function () {
-    // Очищаем поле ввода
     input.value = "";
-    // После очистки снова обновляем иконки, чтобы лупа появилась, а крестик исчез
     loupeORcross();
   });
 }
