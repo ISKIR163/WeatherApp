@@ -1,4 +1,4 @@
-# RestoApp
+# WeatherApp
 
 ## ИНФО
 
